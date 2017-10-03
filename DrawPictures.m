@@ -6,11 +6,11 @@ x=zeros(1,10);
 y=zeros(1,10);
 z=zeros(1,10);
 %画错误数据率和检错率的图像
-for i=10:10:100
-[falserate,Detectionrate,falsealarmrate,result]= DistributeDetectionRate(Mu,dmax,FPC,Mediandmax,100,i);%测试数据不应该这么大，每个节点的训练样本才200个
-x(i/10)=falserate;
-y(i/10)=Detectionrate;
-z(i/10)=falsealarmrate;
+for i=20:20:200
+[falserate,Detectionrate,falsealarmrate,result]= DistributeDetectionRate(Mu,dmax,FPC,Mediandmax,200,i);%测试数据不应该这么大，每个节点的训练样本600个
+x(i/20)=falserate;
+y(i/20)=Detectionrate;
+z(i/20)=falsealarmrate;
 end
 subplot(2,1,1);
 plot(x,y,'-d','linewidth',1,'Markersize',5);
