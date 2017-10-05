@@ -1,4 +1,4 @@
-function [falserate,Detectionrate,falsealarmrate,result]= DistributeDetectionRate(Mu,dmax,FPC,Mediandmax,correct,false)
+function [falserate,Detectionrate,falsealarmrate,result,test]= DistributeDetectionRate(Mu,dmax,FPC,Mediandmax,correct,false)
 %UNTITLED 此处显示有关此函数的摘要
 %   此处显示详细说明
 Fcount=0;
@@ -14,7 +14,7 @@ X=[0.3 0.35 0.4];%均值集合
 for i=1:correct
     for j=1:3
         mu=X(randperm(3,1));
-        Sigma=0.03;%正常数据的取值，在0.04附近波动，方便测量误报率
+        Sigma=0.038;%正常数据的取值，在0.04附近波动，方便测量误报率
         test(i,j)=normrnd(mu,Sigma);
     end
     %计算到第一主成分的距离
@@ -31,21 +31,6 @@ for i=1:correct
     end
 end
 falsealarmrate=Fcount/correct
-
-% %检验异常数据
-% for i=correct+1:correct+false
-%     for j=1:3
-%         test(i,j)=unifrnd(0.4,0.6);
-%     end
-%     s1=test(i,:)-Mu;
-%     d1=norm(s1,2);
-%     d2=s1*FPC;
-%     di=sqrt(d1.^2-d2.^2);
-%     %判断是否超过阈值，判断是否是故障
-%     if(di<=dmax)
-%         result(1,i)=1;
-%     end
-% end
 
 %检测某个属性异常的数据
 for i=correct+1:correct+false

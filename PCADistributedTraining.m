@@ -1,4 +1,4 @@
-function [dmax,Mediandmax,Mu,FPC] =PCADistributedTraining()
+function [dmax,Mediandmax,Mu,FPC,DistributeTrain] =PCADistributedTraining()
 %UNTITLED3 此处显示有关此函数的摘要
 %   此处显示详细说明
 [train]=xlsread('ProduceDistributeData.xls');

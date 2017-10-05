@@ -12,20 +12,20 @@ x(i)=i;
 y(i)=Detectionrate*100;
 z(i)=falsealarmrate*100;
 end
-y=round(y);
-z=round(z);
 subplot(2,1,1);
-plot(x,y,'-.k','linewidth',1,'Markersize',5);
+plot(x,y,'-d','linewidth',1,'Markersize',5);
 %plot(x,z,'-#');
-axis([1 50 90 100]);
+axis([1 50 95 100]);
+grid on;
 % title('DR VS Time Wiindows');%加图形标题
-% xlabel('Time Windows');%加X轴说明
+xlabel('Time Windows');%加X轴说明
 ylabel('DetectionRate(%)');%加Y轴说明
 hold on
 subplot(2,1,2);
-plot(x,z,'-*k','linewidth',1,'Markersize',5);
+plot(x,z,'r-p','linewidth',1,'Markersize',10);
 axis([1 50 0 5]);
-% title('FNR VS Time Windows');%加图形标题
+grid on;
+title('FNR VS Time Windows');%加图形标题
 xlabel('Time Windows');%加X轴说明
 ylabel('Falsealarmrate(%)');%加Y轴说明
 end

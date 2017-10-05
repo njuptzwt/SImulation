@@ -1,0 +1,28 @@
+function [  ] = DrawTrainAndTest(  )
+[dmax,Mediandmax,Mu,FPC,DistributeTrain]=PCADistributedTraining();
+x=DistributeTrain(:,1);
+y=DistributeTrain(:,2);
+z=DistributeTrain(:,3);
+%画错误数据率和检错率的图像
+[test]= DistributeDetectionRate(Mu,dmax,FPC,Mediandmax,400,50);%测试数据不应该这么大，每个节点的训练样本600个
+x1=test(:,1);
+y1=test(:,2);
+z1=test(:,3);
+subplot(1,2,1);
+scatter3(x,y,z,'b','.');%数据集合的空间分布图形
+
+%plot(x,z,'-#');
+axis([0 0.5 0.5 1]);
+grid on;
+title('DR VS FR');%加图形标题
+xlabel('falserate');%加X轴说明
+ylabel('DetectionRate');%加Y轴说明
+hold on
+subplot(2,1,2);
+plot(x,z,'r-p','linewidth',1,'Markersize',10);
+axis([0 0.5 0 0.1]);
+grid on;
+title('FNR VS FR');%加图形标题
+xlabel('falserate');%加X轴说明
+ylabel('Falsealarmrate');%加Y轴说明
+end
